@@ -1,13 +1,14 @@
 import customtkinter
 
-customtkinter.set_appearance_mode("dark")  
-customtkinter.set_default_color_theme("blue") 
+customtkinter.set_appearance_mode("dark")  # Modes: system (default), light, dark
+customtkinter.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
 
-app = customtkinter.CTk()  
+app = customtkinter.CTk()  # create CTk window like you do with the Tk window
 app.title("Calculator")
 app.geometry("350x500")
 app.resizable(False, False)
 
+#button function to show in display
 def button_function(x):
     text = label.cget("text")
     label.configure(text= str(text) + str(x))
@@ -24,14 +25,13 @@ def button_backspace():
     text = label.cget("text")
     label.configure(text= text[:-1])
     
+#create white background for display
 frame = customtkinter.CTkFrame(master=app, width=270, height=70, fg_color="white")
 frame.place(relx=0.11, rely=0.2, anchor=customtkinter.W)
 
-
-
+#create display
 label = customtkinter.CTkLabel(frame, text="", text_color="black", font=("Arial", 24))
 label.place(relx=0.875, rely=0.5, anchor=customtkinter.E)
-
 
 # calculator buttons
 button0 = customtkinter.CTkButton(master=app, text="0", command=lambda: button_function(0), width=60)
@@ -88,8 +88,6 @@ buttondot.place(relx=0.2, rely=0.8, anchor=customtkinter.CENTER)
 
 buttonequals = customtkinter.CTkButton(master=app, text="=", command=lambda: button_equals(), width=60, fg_color="gray", hover_color="dark gray")
 buttonequals.place(relx=0.6, rely=0.8, anchor=customtkinter.CENTER)
-
-
 
 app.mainloop()
 
